@@ -26,6 +26,14 @@ You can change the cascade file with `VideoFaceDetector::setFaceCascade(const st
 You can change the size to which the detector resizes the frames internally with `VideoFaceDetector::setResizedWidth()` and retrieve it with `VideoFaceDetector::resizedWidth()`. This can speed up the detection but the tradeoff is precision. The default setting is 320px.
 
 You can change the template matching max duration with `VideoFaceDetector::setTemplateMatchingMaxDuration(const double s)` and retrieve it with `VideoFaceDetector::templateMatchingMaxDuration()`. The default value is 3 seconds. This is the max time the algorithm tracks using template matching and after this time the algorithm starts tracking in the whole image again. See algorithm description for more details.
+
+
+To compile this program, you must have openCV installed on your system
+```make```
+
+To run this program, you must provide the video or webcam index ( integer 0,1,2, etc )
+
+```./trackFaces video.mp4```
  
 # Head detection and real time tracking
 
@@ -51,12 +59,3 @@ I'm not sure any of this made any sense to you so here's this diagram that will 
  
 [![Algorithm diagram](https://raw.githubusercontent.com/mc-jesus/face_detect_n_track/master/image/img.png)](https://youtu.be/lkFBWUjwDl8)
 
-
-USAGE
------
-To compile this program, you must have openCV installed on your system
-```make```
-
-To run this program, you must provide the video or webcam index ( integer 0,1,2, etc )
-
-```./trackFaces video.mp4```
