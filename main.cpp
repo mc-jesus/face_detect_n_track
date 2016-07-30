@@ -10,7 +10,7 @@ const cv::String    CASCADE_FILE("haarcascade_frontalface_default.xml");
 int main(int argc, char** argv)
 {
     // Try opening camera
-    cv::VideoCapture camera(0);
+    cv::VideoCapture camera(argv[ 1 ]);
     //cv::VideoCapture camera("D:\\video.mp4");
     if (!camera.isOpened()) {
         fprintf(stderr, "Error getting camera...\n");

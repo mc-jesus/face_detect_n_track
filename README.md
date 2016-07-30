@@ -50,3 +50,13 @@ This makes the algorithm fast but it's still shitty as it fails when you rotate 
 I'm not sure any of this made any sense to you so here's this diagram that will make it all really easy to understand... I hope.
  
 [![Algorithm diagram](https://raw.githubusercontent.com/mc-jesus/face_detect_n_track/master/image/img.png)](https://youtu.be/lkFBWUjwDl8)
+
+
+USAGE
+-----
+To compile this program, you must have openCV installed on your system
+```make```
+
+To run this program, you must provide the video or webcam index ( integer 0,1,2, etc )
+
+```./trackFaces video.mp4```

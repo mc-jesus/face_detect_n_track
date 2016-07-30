@@ -152,7 +152,7 @@ void VideoFaceDetector::detectFaceAllSizes(const cv::Mat &frame)
     // Minimum face size is 1/5th of screen height
     // Maximum face size is 2/3rds of screen height
     m_faceCascade->detectMultiScale(frame, m_allFaces, 1.1, 3, 0,
-        cv::Size(frame.rows / 5, frame.rows / 5),
+        cv::Size(frame.rows / 10, frame.rows / 10),
         cv::Size(frame.rows * 2 / 3, frame.rows * 2 / 3));
 
     if (m_allFaces.empty()) return;
