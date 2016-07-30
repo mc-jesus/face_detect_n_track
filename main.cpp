@@ -28,6 +28,8 @@ int main(int argc, char** argv)
         detector >> frame;
         int end = cv::getCPUTickCount();
 
+        if ( frame.empty(  ) ) break;
+
         time_per_frame = (end - start) / cv::getTickFrequency();
         fps = (15 * fps + (1 / time_per_frame)) / 16;
 

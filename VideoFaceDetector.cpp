@@ -254,6 +254,8 @@ cv::Point VideoFaceDetector::getFrameAndDetect(cv::Mat &frame)
 {
     *m_videoCapture >> frame;
 
+    if ( frame.empty(  ) ) return cv::Point( 0,0 );
+
     // Downscale frame to m_resizedWidth width - keep aspect ratio
     m_scale = (double) std::min(m_resizedWidth, frame.cols) / frame.cols;
     cv::Size resizedFrameSize = cv::Size((int)(m_scale*frame.cols), (int)(m_scale*frame.rows));
