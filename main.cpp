@@ -1,5 +1,6 @@
-#include <opencv2\highgui\highgui.hpp>
-#include <opencv2\imgproc\imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <stdio.h>
 
 #include "VideoFaceDetector.h"
 
@@ -9,23 +10,25 @@ const cv::String    CASCADE_FILE("haarcascade_frontalface_default.xml");
 int main(int argc, char** argv)
 {
     // Try opening camera
-    cv::VideoCapture camera(0);
+    cv::VideoCapture camera(argv[ 1 ]);
     //cv::VideoCapture camera("D:\\video.mp4");
     if (!camera.isOpened()) {
         fprintf(stderr, "Error getting camera...\n");
         exit(1);
     }
 
-    cv::namedWindow(WINDOW_NAME, cv::WINDOW_KEEPRATIO | cv::WINDOW_AUTOSIZE);
+    cv::namedWindow(WINDOW_NAME, cv::WINDOW_AUTOSIZE);
 
     VideoFaceDetector detector(CASCADE_FILE, camera);
     cv::Mat frame;
     double fps = 0, time_per_frame;
     while (true)
     {
-        auto start = cv::getCPUTickCount();
+        int start = cv::getCPUTickCount();
         detector >> frame;
-        auto end = cv::getCPUTickCount();
+        int end = cv::getCPUTickCount();
+
+        if ( frame.empty(  ) ) break;
 
         time_per_frame = (end - start) / cv::getTickFrequency();
         fps = (15 * fps + (1 / time_per_frame)) / 16;
